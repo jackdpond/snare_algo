@@ -101,7 +101,7 @@ def get_pitcher_log(id, year):
     
     return df
 
-def get_all_pitchers(file = 'pitcher_ids.json', start_year = 2014, out_file="pitcher_log"):
+def get_all_pitchers(file = 'pitcher_ids.json', start_year = 2014, out_file="pitcher_log", ps=False):
     with open(file, "r") as f:
         pitcher_ids = json.load(f)
 
@@ -118,6 +118,53 @@ def get_all_pitchers(file = 'pitcher_ids.json', start_year = 2014, out_file="pit
         
         df_year = pd.concat(year_logs, ignore_index=True)
         df_year.to_csv(f"{out_file}_{year}.csv", index=False)
+
+
+def get_pitcher_ps_log(pid):
+    url = f"https://www.baseball-reference.com/players/gl.fcgi?id={pid}&t=p&post=1"
+    print(url)
+
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) "
+            "Chrome/58.0.3029.110 Safari/537.36"
+        ),
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br",
+    }
+
+    response = requests.get(url, headers=headers)
+    time.sleep(6)  # be nice to BR
+
+    if response.status_code != 200:
+        print(f"Failed to get postseason data for {pid}")
+        return None
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    # BR sometimes uses slightly different ids; try a couple + a fallback
+    table = (
+        soup.find("table", {"id": "players_standard_pitching"})
+    )
+
+    df = pd.read_html(StringIO(str(table)))[0]
+
+    df["Id"] = pid
+
+    if "Rk" in df.columns:
+        df = df[df["Rk"] != "Rk"]
+        df.drop(columns=["Rk"], inplace=True, errors="ignore")
+
+    if len(df) > 0 and isinstance(df.iloc[-1]["Date"], str) and "Totals" in df.iloc[-1]["Date"]:
+        df = df.iloc[:-1]
+
+    if "Unnamed: 5" in df.columns:
+        df = df.rename(columns={"Unnamed: 5": "Home"})
+
+    return df.reset_index(drop=True)
+
 
 
 def get_batters_per_team(team, year):
@@ -282,22 +329,24 @@ def get_all_batters(file='batter_ids.json', start_year=2014, out_file="batter_lo
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--start", type=int, default=2014)
-    parser.add_argument("--pitcher", action="store_true", help="scrape pitchers")
-    parser.add_argument("--batter",  action="store_true", help="scrape batters")
-    parser.add_argument("--get_players", action="store_true")
-    args = parser.parse_args()
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("--start", type=int, default=2014)
+    # parser.add_argument("--pitcher", action="store_true", help="scrape pitchers")
+    # parser.add_argument("--batter",  action="store_true", help="scrape batters")
+    # parser.add_argument("--get_players", action="store_true")
+    # args = parser.parse_args()
 
-    if args.pitcher:
-        if args.get_players:
-            get_batters_json()
-        else:
-            get_all_pitchers(start_year=args.start)
+    # if args.pitcher:
+    #     if args.get_players:
+    #         get_batters_json()
+    #     else:
+    #         get_all_pitchers(start_year=args.start)
 
-    if args.batter:
-        if args.get_players:
-            print("getting players batter")
-            get_batters_json()
-        else:
-            get_all_batters(start_year=args.start)
+    # if args.batter:
+    #     if args.get_players:
+    #         print("getting players batter")
+    #         get_batters_json()
+    #     else:
+    #         get_all_batters(start_year=args.start)
+    df = get_pitcher_ps_log('galleza01')
+    print(df.head())
