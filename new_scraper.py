@@ -39,7 +39,7 @@ def get_pitchers_per_team(team, year):
 
     return list(pitcher_ids)
 
-def get_pitchers_json():
+def get_pitchers_json(output_file="data/pitcher_ids.json"):
     data = dict()
 
     teams = teams = [
@@ -60,7 +60,7 @@ def get_pitchers_json():
             pitchers = get_pitchers_per_team(team, year)
             data[year][team] = pitchers
 
-        with open("pitcher_ids.json", "w") as f:
+        with open(output_file, "w") as f:
             json.dump(data, f, indent=4)
 
 
@@ -101,7 +101,7 @@ def get_pitcher_log(id, year):
     
     return df
 
-def get_all_pitchers(file = 'pitcher_ids.json', start_year = 2014, out_file="pitcher_log", ps=False):
+def get_all_pitchers(file = 'data/pitcher_ids.json', start_year = 2014, out_file="data/pitcher_log", ps=False):
     with open(file, "r") as f:
         pitcher_ids = json.load(f)
 
@@ -144,12 +144,19 @@ def get_pitcher_ps_log(pid):
 
     soup = BeautifulSoup(response.text, "html.parser")
 
-    # BR sometimes uses slightly different ids; try a couple + a fallback
     table = (
-        soup.find("table", {"id": "players_standard_pitching"})
-    )
+            soup.find("table", {"id": "players_standard_pitching"})
+        )
+    if table is None:
+        print(f"No table found for {url}")
+        return None
 
-    df = pd.read_html(StringIO(str(table)))[0]
+
+    try:
+        df = pd.read_html(StringIO(str(table)))[0]
+    except ValueError:
+        print(f"No table found for {url}")
+        return None
 
     df["Id"] = pid
 
@@ -327,6 +334,62 @@ def get_all_batters(file='batter_ids.json', start_year=2014, out_file="batter_lo
             print(f"No batter logs collected for {y}")
 
 
+def get_ps_pitchers(json_file="data/pitcher_ids.json", backup="data/ps_pitcher_logs.csv"):
+    # Handle resume / existing backup
+    resume = os.path.exists(backup)
+    if resume:
+        pdf = pd.read_csv(backup)
+        pids_done = set(pdf['Id'])
+    else:
+        pdf = None
+        pids_done = set()
+
+    # Load pitcher IDs from JSON
+    with open(json_file, "r") as f:
+        pitcher_ids = json.load(f)
+
+    # Collect all IDs from nested dict: {year: {team: [ids...]}}
+    ids = []
+    for year, teams in pitcher_ids.items():
+        for team, team_ids in teams.items():
+            ids.extend(team_ids)
+
+    # Remove IDs we've already processed
+    ids = list(set(ids) - pids_done)
+
+    id_dfs = []
+    updating_df = pd.DataFrame()
+    counter = 0
+
+    for pid in ids:
+        id_df = get_pitcher_ps_log(pid)
+        if id_df is None or id_df.empty:
+            continue
+
+        id_dfs.append(id_df)
+        counter += 1
+
+        # Periodically flush to disk every 20 pitchers
+        if counter % 20 == 0:
+            updating_df = pd.concat([updating_df] + id_dfs, ignore_index=True)
+            updating_df.to_csv(backup, index=False)
+            id_dfs = []
+
+    # Final concat for any remaining pitchers
+    pid_df = pd.concat([updating_df] + id_dfs, ignore_index=True)
+
+    # If resuming, add the old data back in
+    if resume:
+        pid_df = pd.concat([pdf, pid_df], ignore_index=True)
+
+    # Final save
+    pid_df.to_csv(backup, index=False)
+
+    return pid_df
+
+
+
+
 
 if __name__ == "__main__":
     # parser = argparse.ArgumentParser()
@@ -348,5 +411,4 @@ if __name__ == "__main__":
     #         get_batters_json()
     #     else:
     #         get_all_batters(start_year=args.start)
-    df = get_pitcher_ps_log('galleza01')
-    print(df.head())
+    get_ps_pitchers()
