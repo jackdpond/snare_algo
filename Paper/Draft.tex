@@ -11,6 +11,9 @@
 \usepackage{hyperref} %makes cross references into hyperlinks. 
 \usepackage{caption}
 \usepackage{subcaption} %Allows subfigures
+
+\usepackage{algorithm}
+\usepackage{algpseudocode} 
  
 
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
@@ -53,6 +56,29 @@ Also reference articles and sources \cite{Vandermeersch} that are relevant or th
 \section{Data Cleaning / Feature Engineering }
 
   Tell us what you did when you were cleaning your data and engineering features.  Why did you make the choices that you did?  What are the consequences of those choices?
+
+  \begin{enumerate}
+  \item \textbf{FIP} stands for Fielding Independent Pitching, and is a metric designed to capture how well a pitcher prevents runs independently of the rest of the defense. It is a better metric of a pitcher's skill than Earned Run Average because it disregards events outside of the pitcher's control.
+  \item \textbf{Bullpen} Because pitching strains a pitcher's arm quickly, one pitcher will start and throw about 5-7 innings before being switched out for a \textit{relief pitcher}. The bank of pitchers ready to relieve are called the Bullpen.
+  \item \textbf{OOA} stands for Outs Above Average and signifies how many more outs a player makes than an average fielder at the same position.
+  \item \textbf{WOBA} stands for Weighted On-Base Average and signifies how often players make it on base, weighted by how likely they are to score based on the manner in which they made it on base.
+\end{enumerate}
+
+
+  \par We gathered the data we used in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average) for each team for each year from 2014 - 2025.
+
+  \par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen, average OOA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wildcard in the playoffs. We also decided to include a feature indicating which team played at home.
+
+  \par The pitcher's logs (collectively referred to as df) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns. We first converted the Date column to pandas.DateTime. After sorting the df by Pitcher Id and Date, we grouped the df by Pitcher ID and shifted the Date column to create a Previous Game Date column, and subtracted the Previous Game Date column from the Date column to create a Freshness column for each pitcher in each game.
+
+  \par Additional changes to make the pitcher logs more useful included adding a Starter feature that one-hot-encodes whether the pitcher started that game, and a Game ID to uniquely identify each game, based on the date and the two teams playing.
+
+  \par The dataset of team level statistics by year included the following pertinent features: Team, Year, OOA (averaged over the season), WOBA (averaged over the season), and Is-Wildcard. This dataset was nearly immediately useable after cleaning the Team names to match those in the pitcher logs dataset. We merged it with the pitcher logs on Year and Team.
+
+  \par Equipped with a newly-merged datset (with features Date, Team, Pitcher ID, FIP, Innings played, Game Result, Freshness, Starter, Game ID, Team OOA, Team WOBA, Is-Wildcard for each pitcher in each game) we were ready to assemble a final games dataset. To do so, we grouped the newly-merged dataset by Game ID and then by team. For each team in each game, we assembled a dictionary containing the starter's FIP and freshness, the meaned FIP and freshness of the relief pitchers, whether the team was at home, team OOA, team FIP, whether it was a post-season game, and if so, whether the team was a wildcard during the game. After shuffling the order of the teams, we concatenated the two team's stats into a single row, with a results feature signifying whether the first team in the row won or lost. There were no ties in our dataset. 
+
+\par With our data in a tabular dataset with a binary label, we were ready to train!
+
 
 
 %% Third Section
