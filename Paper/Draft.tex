@@ -14,6 +14,11 @@
 
 \usepackage{algorithm}
 \usepackage{algpseudocode} 
+
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\tikzset{round/.style={draw,rounded corners,minimum width=3.8cm,minimum height=0.9cm,align=center}}
+
  
 
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
@@ -40,43 +45,38 @@
 
 %% First Section
 \section{Research question and overview of the data }
-Recent MLB postseasons have shown an interesting trend: Wild Card teams often
-perform better than division winners, even though they typically finish the
-regular season with weaker records. This raises an important question for both
-baseball fans and analysts:
+\par Within the Major League Baseball (MLB) organization, there are two leagues (The American League and the National League), which are further split into three divisions each. At the end of the regular season of 162 games for each team, 12 teams are chosen to advance in the post-season, six from each league. Six of these teams are simply the teams with the best season record within their division. These teams are known as "division winners". The remaining six teams that advance to the postseason are the teams with the best season records out of the remaining teams, three from each league. These teams are known as "wildcards", and are the underdogs of the postseason tournament which culminates in the World Series, where the winners of each league square off to be declared the best team in the MLB.
+
+\par Recent MLB postseasons have shown an interesting trend: Wild Card teams often perform better than division winners, even though they typically finish the regular season with weaker records. This raises an important question for both baseball fans and analysts:
 
 \begin{quote}
-  \textit{What makes a Wild Card team outperform a division winner in the MLB
-  postseason?}
+  \textit{What makes a Wild Card team outperform a division winner in the MLB postseason?}
   \end{quote}
 
-This question is interesting because it challenges the assumption that
-regular season strength is a reliable predictor of postseason performance.
-It also relates to the design of playoff formats and whether certain types of
-teams are structurally advantaged in short playoff series.
+\begin{quote}
+  \textit{How should the fact that a team is a Wild Card factor in to predicting their success?}
+  \end{quote}
+
+This question is interesting because it challenges the assumption that regular season strength is a reliable predictor of postseason performance. It also relates to the design of playoff formats and whether certain types of teams are structurally advantaged in short playoff series.
 
 \section{Background and Prior Work}
 
-Several previous studies have examined MLB postseason performance. Baseball
-Prospectus and FanGraphs have written extensively about the role of randomness,
-bullpen strength, and matchups in postseason series. Academic work (e.g., Berri \&
-Schmidt, 2010) has shown that regular season winning percentage is a relatively
-weak predictor of postseason outcomes. 
+Several previous studies have examined MLB postseason performance. Baseball Prospectus and FanGraphs have written extensively about the role of randomness, bullpen strength, and matchups in postseason series. Academic work (e.g., Berri \& Schmidt, 2010) has shown that regular season winning percentage is a relatively weak predictor of postseason outcomes. 
 %% Second Section 
 \section{Data Set}
 
-We use MLB game data from 2015-2025. The data includes variables such as team OOA, team WOBA, bullpen FIP, bullpen usage,
-whether the team is a wildcard, and postseason results. The data set is strong in that the data is specifically geared 
-towards matchups and understanding the impact of the wildcard on the postseason. However, with only so many postseason games (317),
-it is difficult to fully understand the impact of the wildcard teams.
+\par We use MLB game data from 2015-2025. The data includes variables such as team OOA, team WOBA, bullpen FIP, bullpen usage, whether the team is a wildcard, and postseason results. The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
+
+\par We gathered the data we used in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
+
+\par A shortcoming of this dataset is that the quantity of postseason games (317) is dwarfed by the quantity of regular season games (~20,000). Because the state of whether a team is a wild card or not is only pertinent in the postseason, this dataset (which reflects the real life proportion) is wildly unbalanced. Therefore any models we train may be incentivized to disregard the wildcard feature.
 
 Based on our prior experience with baseball, we form the following hypotheses:
 
 \begin{enumerate}
     \item Wild Card teams may enter the later rounds of the postseason carrying more momentum than their division winner counterpart, causing them to win.
     \item Bullpen strength will be more important in the postseason than in the regular season.
-    \item Matchup-based factors (pitcher handedness, lineup construction) may
-    be more important than overall regular season strength. 
+    \item Matchup-based factors (pitcher handedness, lineup construction) may be more important than overall regular season strength. 
 \end{enumerate}
 
 
@@ -93,17 +93,19 @@ Based on our prior experience with baseball, we form the following hypotheses:
 \end{enumerate}
 
 
-  \par We gathered the data we used in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average) for each team for each year from 2014 - 2025.
+\par We gathered the data we used in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average) for each team for each year from 2014 - 2025.
 
-  \par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen, average OOA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wildcard in the playoffs. We also decided to include a feature indicating which team played at home.
+\par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen, average OOA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wildcard in the playoffs. We also decided to include a feature indicating which team played at home.
 
-  \par The pitcher's logs (collectively referred to as df) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns. We first converted the Date column to pandas.DateTime. After sorting the df by Pitcher Id and Date, we grouped the df by Pitcher ID and shifted the Date column to create a Previous Game Date column, and subtracted the Previous Game Date column from the Date column to create a Freshness column for each pitcher in each game.
+\par The pitcher's logs (collectively referred to as df) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns. We first converted the Date column to pandas.DateTime. After sorting the df by Pitcher Id and Date, we grouped the df by Pitcher ID and shifted the Date column to create a Previous Game Date column, and subtracted the Previous Game Date column from the Date column to create a Freshness column for each pitcher in each game.
 
-  \par Additional changes to make the pitcher logs more useful included adding a Starter feature that one-hot-encodes whether the pitcher started that game, and a Game ID to uniquely identify each game, based on the date and the two teams playing.
+\par Additional changes to make the pitcher logs more useful included adding a Starter feature that one-hot-encodes whether the pitcher started that game, and a Game ID to uniquely identify each game, based on the date and the two teams playing.
 
-  \par The dataset of team level statistics by year included the following pertinent features: Team, Year, OOA (averaged over the season), WOBA (averaged over the season), and Is-Wildcard. This dataset was nearly immediately useable after cleaning the Team names to match those in the pitcher logs dataset. We merged it with the pitcher logs on Year and Team.
+\par The dataset of team level statistics by year included the following pertinent features: Team, Year, OOA (averaged over the season), WOBA (averaged over the season), and Is-Wildcard. This dataset was nearly immediately useable after cleaning the Team names to match those in the pitcher logs dataset. We merged it with the pitcher logs on Year and Team.
 
-  \par Equipped with a newly-merged datset (with features Date, Team, Pitcher ID, FIP, Innings played, Game Result, Freshness, Starter, Game ID, Team OOA, Team WOBA, Is-Wildcard for each pitcher in each game) we were ready to assemble a final games dataset. To do so, we grouped the newly-merged dataset by Game ID and then by team. For each team in each game, we assembled a dictionary containing the starter's FIP and freshness, the meaned FIP and freshness of the relief pitchers, whether the team was at home, team OOA, team FIP, whether it was a post-season game, and if so, whether the team was a wildcard during the game. After shuffling the order of the teams, we concatenated the two team's stats into a single row, with a results feature signifying whether the first team in the row won or lost. There were no ties in our dataset. 
+\par Equipped with a newly-merged datset (with features Date, Team, Pitcher ID, FIP, Innings played, Game Result, Freshness, Starter, Game ID, Team OOA, Team WOBA, Is-Wildcard for each pitcher in each game) we were ready to assemble a final games dataset. To do so, we grouped the newly-merged dataset by Game ID and then by team. For each team in each game, we assembled a dictionary containing the starter's FIP and freshness, the meaned FIP and freshness of the relief pitchers, whether the team was at home, team OOA, team FIP, whether it was a post-season game, and if so, whether the team was a wildcard during the game. After shuffling the order of the teams, we concatenated the two team's stats into a single row, with a results feature signifying whether the first team in the row won or lost. There were no ties in our dataset.
+
+\par This means that in the final dataset, there is a row for each game or match-up. Each row stats for each teams that were true \textit{by the end of the game}. For instance, the FIP value in the game's row is the FIP of the pitcher calculated at the end of the game. If this were a prediction model, this would be considered a mild form of data leakage. Since our model is not a prediction model, but rather a model trained in order to evaluage feature importance, we may treat these post-game calulated values as true values. The same concept applies to why we evaluated the freshness and skill (FIP) of the pitchers that actually played in the game rather than the pitchers in the bullpen that were available.
 
 \par With our data in a tabular dataset with a binary label, we were ready to train!
 
@@ -118,6 +120,50 @@ Analyze the data, draw conclusions, and effectively communicate your main observ
 
     \item Reference figures and plots, like Figure~\ref{fig:MeanSquaredError}.
 \end{itemize}
+
+\par Our final dataset is large, with 19,781 rows, one per game, and 20 features, namely \textbf{Game ID}, \textbf{1 Starter FIP}, \textbf{1 Starter Freshness}, \textbf{1 Relief FIP}, \textbf{1 Relief Freshness}, \textbf{1 WOBA}, \textbf{1 OOA}, \textbf{1 Home} (Is team 1 at home?), \textbf{1 Team}, \textbf{1 Is Wildcard}, \textbf{2 Starter FIP}, \textbf{2 Starter Freshness}, \textbf{2 Relief FIP}, \textbf{2 Relief Freshness}, \textbf{2 WOBA}, \textbf{2 OOA}, \textbf{2 Team}, \textbf{2 Is Wildcard}, \textbf{Is Playoff Game}, and \textbf{Result} (Did Team 1 win?). In this section, we will visually inspect the data and evaluate our initial assumptions.
+
+\par We will first inspect the distributions of key numerical features Starter FIP, Starter Freshness, Relief FIP, Relief Freshness, WOBA, and OOA. We will only look at team 1 since team 1 is a random half of the data, and the corresponding values and distributions for team 2 match.
+
+\par As seen in Figure ~\ref{fig:FeatureDistributions}, skill metrics (FIP, WOBA, OOA) are normally distributed, which is as expected. The distribution of freshness, both for starting pitchers and relief pitchers, is heavily skewed towards 0 days of rest. 
+
+
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{figures/feature_distributions.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{Distributions of various of the features of our final dataset. Each of the skill metrics (FIP, WOBA, OOA) are distributed normally, as we would expect, and the freshness is greatly skewed towards 0 days rest.  
+}
+\label{fig:FeatureDistributions} % for automatic cross referencing
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{figures/results_box_plots.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{This figure shows the distribution of six features, grouped by result (1 for win, 0 for loss). Regardless of feature, the result-grouped distributions are nearly identical for each feature. 
+}
+\label{fig:ResultBoxPlots} % for automatic cross referencing
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{figures/home_away.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{Surprisingly, teams are slightly more likely to win while playing away games, and slightly more likely to lose at home games. 
+}
+\label{fig:HomeAway} % for automatic cross referencing
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center} %Put your images in a figure like this
+\includegraphics[width=\textwidth]{figures/logistic_correlation.pdf} % Better to make them pdfs than png or gif or jpeg
+\end{center}
+\caption{These figures plot the result of a game (1 for win, 0 for loss) against the difference between team 1 and team 2 for various features: Starter FIP, WOBA, and OOA. We hypothesized that each feature would correlate with wins, and are surprised that Starter FIP is inversely correlated with wins.
+}
+\label{fig:LogisticCorrelation} % for automatic cross referencing
+\end{figure}
+
 
 
 
