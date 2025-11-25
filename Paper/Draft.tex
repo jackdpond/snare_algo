@@ -8,6 +8,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb,amsmath,amsthm}
 \usepackage{placeins} %enables \FloatBarrier, which prevents figures and tables from going below it.
+\usepackage{float} %enables [H] placement option for figures
 \usepackage{hyperref} %makes cross references into hyperlinks. 
 \usepackage{caption}
 \usepackage{subcaption} %Allows subfigures
@@ -109,7 +110,7 @@ Based on our prior experience with baseball, we form the following hypotheses:
 
 \par With our data in a tabular dataset with a binary label, we were ready to train!
 
-
+\FloatBarrier % Prevent figures from floating into the next section
 
 %% Third Section
 \section{Data Visualization and Basic Analysis}
@@ -164,8 +165,8 @@ Analyze the data, draw conclusions, and effectively communicate your main observ
 \label{fig:LogisticCorrelation} % for automatic cross referencing
 \end{figure}
 
-
-
+\FloatBarrier % Prevent figures from floating into the next section
+\clearpage % Start the next section on a fresh page
 
 %%Fourth Section
 \section{Learning Algorithms and In-depth Analysis }
@@ -180,11 +181,11 @@ We found that the most important features in the postseason were a team's FIP an
 as we expected that a team's OOA and 
 WOBA would be more significant in October. However, our results are consistent with baseball intuition: pitching wins games. 
 We also found that being a Wild Card team was not nearly as significant as we expected, ranking last in feature importance. 
-see figure \ref{fig:PostseasonPermImportance}.
+See Figure~\ref{fig:PostseasonPermImportance}.
 
-\begin{figure}[htb]
+\begin{figure}[H]
   \begin{center}
-    \includegraphics[width=\textwidth]{top15Features.png}
+    \includegraphics[width=0.9\textwidth]{../top15Features.png}
   \end{center}
   \caption{Feature importance for the postseason}
   \label{fig:PostseasonPermImportance}
