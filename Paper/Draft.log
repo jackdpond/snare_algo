@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 NOV 2025 22:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 NOV 2025 22:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -566,12 +566,12 @@ Overfull \hbox (3.47668pt too wide) in paragraph at lines 76--77
 
 
 [2]
-Overfull \hbox (1.03537pt too wide) in paragraph at lines 87--88
+Overfull \hbox (1.03537pt too wide) in paragraph at lines 85--86
 []\OT1/cmr/bx/n/10.95 Bullpen \OT1/cmr/m/n/10.95 Be-cause pitch-ing strains a pitcher's arm quickly, one pitcher
  []
 
 
-Overfull \hbox (37.13632pt too wide) in paragraph at lines 98--99
+Overfull \hbox (37.13632pt too wide) in paragraph at lines 96--97
 []\OT1/cmr/m/n/10.95 The dataset of team level sta-tis-tics by year (sourced from Base-ball Savant[[]])
  []
 
@@ -584,21 +584,22 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <figures/feature_distributions.pdf, id=77, 714.7503pt x 570.933pt>
 File: figures/feature_distributions.pdf Graphic file (type pdf)
 <use figures/feature_distributions.pdf>
-Package pdftex.def Info: figures/feature_distributions.pdf  used on input line 120.
+Package pdftex.def Info: figures/feature_distributions.pdf  used on input line 118.
 (pdftex.def)             Requested size: 360.0pt x 287.57402pt.
 <figures/results_box_plots.pdf, id=80, 1003.8303pt x 570.933pt>
 File: figures/results_box_plots.pdf Graphic file (type pdf)
 <use figures/results_box_plots.pdf>
-Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 131.
+Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 129.
 (pdftex.def)             Requested size: 360.0pt x 204.75166pt.
-<figures/logistic_correlation.pdf, id=82, 1292.9103pt x 426.393pt>
-File: figures/logistic_correlation.pdf Graphic file (type pdf)
-<use figures/logistic_correlation.pdf>
-Package pdftex.def Info: figures/logistic_correlation.pdf  used on input line 150.
-(pdftex.def)             Requested size: 360.0pt x 118.72559pt.
 
 
 [4]
+<figures/logistic_correlation.pdf, id=88, 1292.9103pt x 426.393pt>
+File: figures/logistic_correlation.pdf Graphic file (type pdf)
+<use figures/logistic_correlation.pdf>
+Package pdftex.def Info: figures/logistic_correlation.pdf  used on input line 148.
+(pdftex.def)             Requested size: 360.0pt x 118.72559pt.
+
 
 [5 <./figures/feature_distributions.pdf>]
 
@@ -606,7 +607,7 @@ Package pdftex.def Info: figures/logistic_correlation.pdf  used on input line 15
 <../top15Features.png, id=102, 451.6875pt x 374.39874pt>
 File: ../top15Features.png Graphic file (type png)
 <use ../top15Features.png>
-Package pdftex.def Info: ../top15Features.png  used on input line 173.
+Package pdftex.def Info: ../top15Features.png  used on input line 171.
 (pdftex.def)             Requested size: 323.9978pt x 268.57285pt.
 
 Underfull \vbox (badness 3838) has occurred while \output is active []
@@ -641,7 +642,7 @@ Here is how much of TeX's memory you used:
  1302 hyphenation exceptions out of 8191
  84i,7n,91p,1026b,539s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Draft.pdf (9 pages, 390193 bytes).
+Output written on Draft.pdf (9 pages, 390297 bytes).
 PDF statistics:
  169 PDF objects out of 1000 (max. 8388607)
  132 compressed objects within 2 object streams

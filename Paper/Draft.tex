@@ -42,9 +42,9 @@
 
 %% First Section
 \section{Research question and overview of the data }
-\par Within the Major League Baseball (MLB) organization, there are two leagues (The American League and the National League), which are further split into three divisions each. At the end of the regular season of 162 games for each team, 12 teams are chosen to advance in the post-season, six from each league. Six of these teams are simply the teams with the best season record within their division. These teams are known as "division winners". The remaining six teams that advance to the postseason are the teams with the best season records out of the remaining teams, three from each league. These teams are known as "wildcards", and are the underdogs of the postseason tournament which culminates in the World Series, where the winners of each league square off to be declared the best team in the MLB.
+\par Within the Major League Baseball (MLB) organization, there are two leagues (The American League and the National League), which are further split into three divisions each. At the end of the regular season of 162 games for each team, 12 teams are chosen to advance to the post-season, six from each league. Six of these teams are simply the teams with the best season record within their division. These teams are known as "division winners". The remaining six teams that advance to the postseason are the teams with the best season records out of the remaining teams, three from each league. These teams are known as "wildcards", and are the underdogs of the postseason tournament which culminates in the World Series, where the winners of each league square off to be declared the best team in the MLB.
 
-\par Recent MLB postseasons have shown an interesting trend: Wild Card teams often perform better than division winners, even though they typically finish the regular season with weaker records. This raises an important questions for both baseball fans and analysts:
+\par Recent MLB postseasons have shown an interesting trend: Wild Card teams often perform better than division winners, even though they typically finish the regular season with weaker records. This raises important questions for both baseball fans and analysts:
 
 \begin{quote}
   \textit{What makes a Wild Card team outperform a division winner in the MLB postseason?}
@@ -62,7 +62,7 @@ Several previous studies have examined MLB postseason performance. Baseball Pros
 %% Second Section 
 \section{Data Set}
 
-\par We use MLB game data from 2014-2025. The data includes variables such as pitcher skill level and team OOA, team WOBA, bullpen FIP, bullpen freshness, and whether the team is a wildcard. The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
+\par We use MLB game data from 2014-2025. The data includes variables such as pitcher skill level and team OOA, team WOBA, bullpen FIP, bullpen freshness, and whether the team is a wildcard (lingo will be explained later in the paper). The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
 
 \par We gathered the data for the project in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2025, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2025, and 3) team level statistics (such as outs above average or weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
 
@@ -76,8 +76,6 @@ Based on our prior experience with baseball, we form the following hypotheses:
     \item Matchup-based factors (pitcher handedness, lineup construction) may be more important than overall regular season strength. 
 \end{enumerate}
 
-
-
 \section{Data Cleaning / Feature Engineering }
 
 \par There is an extensive tradition of data science applied to Baseball. This project has benefited from that tradition, in that there are many well developed statistics collected and reported for the MLB. Part of this extensive tradition is an extensive lingo. We define terms that are important for this paper to begin this section.
@@ -85,13 +83,13 @@ Based on our prior experience with baseball, we form the following hypotheses:
   \begin{enumerate}
   \item \textbf{FIP} stands for Fielding Independent Pitching, and is a metric designed to capture how well a pitcher prevents runs independently of the rest of the defense. It is a better metric of a pitcher's skill than Earned Run Average because it disregards events outside of the pitcher's control.
   \item \textbf{Bullpen} Because pitching strains a pitcher's arm quickly, one pitcher will start and throw about 5-7 innings before being switched out for a \textit{relief pitcher}. The bank of pitchers ready to relieve are called the Bullpen.
-  \item \textbf{OOA} stands for Outs Above Average and signifies how many more outs a player makes than an average fielder at the same position.
+  \item \textbf{OAA} stands for Outs Above Average and signifies how many more outs a player makes than an average fielder at the same position.
   \item \textbf{WOBA} stands for Weighted On-Base Average and signifies how often players make it on base, weighted by how likely they are to score based on the manner in which they made it on base.
 \end{enumerate}
 
-\par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen, average OOA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wildcard in the playoffs. We also decided to include a feature indicating which team played at home.
+\par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen, average OAA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wildcard in the playoffs. We also decided to include a feature indicating which team played at home.
 
-\par The pitchers' logs (sourced from Baseball-Reference\cite{baseballref}) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns. We first converted the Date column to pandas.DateTime. After sorting the pitchers' logs by Pitcher Id and Date, we grouped the dataframe by Pitcher ID and shifted the Date column to create a Previous Game Date column, and subtracted the Previous Game Date column from the Date column to create a Freshness column for each pitcher in each game. A pitchers' first game was assigned the maximum value for freshness in the rest of the dataset.
+\par The pitchers' logs (sourced from Baseball-Reference\cite{baseballref}) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns. We first converted the Date column to pandas.DateTime objects. After sorting the pitchers' logs by Pitcher Id and Date, we grouped the dataframe by Pitcher ID and shifted the Date column to create a Previous Game Date column, and subtracted the Previous Game Date column from the Date column to create a Freshness column for each pitcher in each game. A pitchers' first game (originally with freshness NaN) was assigned the maximum value for freshness in the rest of the dataset.
 
 \par Additional changes to make the pitcher logs more useful included adding a Starter feature that one-hot-encodes whether the pitcher started that game, and a Game ID to uniquely identify each game, based on the date and the two teams playing.
 
