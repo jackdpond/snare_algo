@@ -67,7 +67,7 @@ Several previous studies have examined MLB postseason performance. Baseball Pros
 
 \par We use MLB game data from 2015-2025. The data includes variables such as team OOA, team WOBA, bullpen FIP, bullpen usage, whether the team is a wildcard, and postseason results. The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
 
-\par We gathered the data we used in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
+\par We gathered the data for the project in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
 
 \par A shortcoming of this dataset is that the quantity of postseason games (317) is dwarfed by the quantity of regular season games (~20,000). Because the state of whether a team is a wild card or not is only pertinent in the postseason, this dataset (which reflects the real life proportion) is wildly unbalanced. Therefore any models we train may be incentivized to disregard the wildcard feature.
 
@@ -169,17 +169,38 @@ Analyze the data, draw conclusions, and effectively communicate your main observ
 
 %%Fourth Section
 \section{Learning Algorithms and In-depth Analysis }
+For our project, we trained both Random Forest and XGBoost models to predict the outcome of a game
+based on the features of the teams playing. The primary goal of our modeling was not prediction accuracy,
+but rather to identify which features most strongly influence game outcomes in the postseason. These models work well for our problem 
+because they are able to return feature importance scores that are interpretable and easy to understand.
 
- Analyze the data using the machine learning techniques discussed in class. Explain what research questions you can answer using the  machine learning techniques presented this semester, and if applicable, what you think you may be able to answer next semester.
+With different iterations, our best Random Forest model achieved an F1 score of 0.6963, while our best XGBoost model achieved an F1 score of 0.701. 
+The two models had similar feature importance ranking, with the top 15 features being the same for both models.
+We found that the most important features in the postseason were a team's FIP and freshness for both starting and relief pitchers. This was somewhat surprising to us,
+as we expected that a team's OOA and 
+WOBA would be more significant in October. However, our results are consistent with baseball intuition: pitching wins games. 
+We also found that being a Wild Card team was not nearly as significant as we expected, ranking last in feature importance. 
+see figure \ref{fig:PostseasonPermImportance}.
 
-Be able to explain the results of your analysis, whether the results are meaningful, and why you chose the tools that you used.  
+\begin{figure}[htb]
+  \begin{center}
+    \includegraphics[width=\textwidth]{top15Features.png}
+  \end{center}
+  \caption{Feature importance for the postseason}
+  \label{fig:PostseasonPermImportance}
+  \end{figure}
+
+
+Taken together, these results suggest what teams should try to optimize for in the postseason. 
+Having a talented, well rested bullpen and a strong starting pitcher appears to be a key ingredient for postseason success. 
+This is easier said than done, as it requires managing the bullpen in a way that does not wear pitchers out over the course 
+of a 162-game season while still winning enough games to reach October in the first place. There has been significant research
+into optimal bullpen management, but elaborating further is outside the scope of this project. 
+
 
 %%Fifth Section
 \section{Ethical Implications and Conclusions}
-Thoughtfully analyze the ethical implications of your research questions, the data you gathered, and the analysis that was performed.  Are there privacy or other implications from the collection or use of the data?  Could your results and methods be misused or misunderstood?  What can and should be done to prevent misuse and misunderstanding?  Could your algorithms and methods result in a destructive self-fulfilling feedback loop?  How could that be prevented or controlled?  What other ethical implications does your work have?  
-
-
-This part should all be done before you get to \emph{page 5}.  The bibliography can spill on to page 6, but we won't read text that goes past page 5.
+The 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
