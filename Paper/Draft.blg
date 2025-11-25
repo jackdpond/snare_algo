@@ -3,44 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Draft.aux
 The style file: alpha.bst
 Database file #1: refs.bib
-You've used 3 entries,
+Warning--to sort, need author or key in baseballsavant
+You've used 5 entries,
             2543 wiz_defined-function locations,
-            574 strings with 4824 characters,
-and the built_in function-call counts, 910 in all, are:
-= -- 90
-> -- 35
-< -- 2
-+ -- 11
-- -- 10
-* -- 43
-:= -- 160
-add.period$ -- 12
-call.type$ -- 3
-change.case$ -- 16
-chr.to.int$ -- 3
-cite$ -- 3
-duplicate$ -- 35
-empty$ -- 71
-format.name$ -- 15
-if$ -- 185
-int.to.chr$ -- 1
+            583 strings with 5012 characters,
+and the built_in function-call counts, 1408 in all, are:
+= -- 142
+> -- 44
+< -- 3
++ -- 14
+- -- 12
+* -- 65
+:= -- 231
+add.period$ -- 19
+call.type$ -- 5
+change.case$ -- 25
+chr.to.int$ -- 4
+cite$ -- 7
+duplicate$ -- 56
+empty$ -- 123
+format.name$ -- 18
+if$ -- 297
+int.to.chr$ -- 2
 int.to.str$ -- 0
 missing$ -- 1
-newline$ -- 21
-num.names$ -- 9
-pop$ -- 22
+newline$ -- 32
+num.names$ -- 12
+pop$ -- 38
 preamble$ -- 1
-purify$ -- 19
+purify$ -- 30
 quote$ -- 0
-skip$ -- 34
+skip$ -- 53
 stack$ -- 0
-substring$ -- 22
-swap$ -- 3
-text.length$ -- 2
+substring$ -- 37
+swap$ -- 5
+text.length$ -- 3
 text.prefix$ -- 2
 top$ -- 0
-type$ -- 24
-warning$ -- 0
-while$ -- 7
-width$ -- 4
-write$ -- 44
+type$ -- 40
+warning$ -- 1
+while$ -- 9
+width$ -- 7
+write$ -- 70
+(There was 1 warning)

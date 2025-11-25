@@ -1,10 +1,21 @@
-\begin{thebibliography}{{Fan}25}
+\begin{thebibliography}{{Bas}25b}
 
-\bibitem[{Bas}25]{baseballprospectus_ps}
+\bibitem[bas25a]{baseballsavant}
+Baseball savant.
+\newblock \url{https://baseballsavant.mlb.com}, 2025.
+\newblock Accessed November 25, 2025.
+
+\bibitem[{Bas}25b]{baseballprospectus_ps}
 {Baseball Prospectus}.
 \newblock Postseason analysis archive.
 \newblock \url{https://www.baseballprospectus.com}, 2025.
 \newblock Accessed November 25, 2025.
+
+\bibitem[BR25]{baseballref}
+Baseball-Reference.
+\newblock Player game logs.
+\newblock \url{https://www.baseball-reference.com}, 2025.
+\newblock Accessed: 2025-11-24.
 
 \bibitem[BS10]{berri_schmidt_2010}
 David~J. Berri and Martin~B. Schmidt.
