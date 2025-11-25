@@ -57,15 +57,15 @@
   \textit{How should the fact that a team is a Wild Card factor in to predicting their success?}
   \end{quote}
 
-This question is interesting because it challenges the assumption that regular season strength is a reliable predictor of postseason performance. It also relates to the design of playoff formats and whether certain types of teams are structurally advantaged in short playoff series.
+These two questions  are interesting because they challenge the assumption that regular season strength is a reliable predictor of postseason performance. It also relates to the design of playoff formats and whether certain types of teams are structurally advantaged in short playoff series.
 
 \section{Background and Prior Work}
 
-Several previous studies have examined MLB postseason performance. Baseball Prospectus and FanGraphs have written extensively about the role of randomness, bullpen strength, and matchups in postseason series. Academic work (e.g., Berri \& Schmidt, 2010) has shown that regular season winning percentage is a relatively weak predictor of postseason outcomes. 
+Several previous studies have examined MLB postseason performance. Baseball Prospectus and FanGraphs have written extensively about the role of randomness, bullpen strength, and matchups in postseason series \cite{baseballprospectus_ps,fangraphs_ps}. Academic work (e.g., Berri \& Schmidt, 2010) has shown that regular season winning percentage is a relatively weak predictor of postseason outcomes \cite{berri_schmidt_2010}. 
 %% Second Section 
 \section{Data Set}
 
-\par We use MLB game data from 2015-2025. The data includes variables such as team OOA, team WOBA, bullpen FIP, bullpen usage, whether the team is a wildcard, and postseason results. The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
+\par We use MLB game data from 2015-2025. The data includes variables such as team OOA, team WOBA, bullpen FIP, bullpen freshness, and whether the team is a wildcard. The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
 
 \par We gathered the data for the project in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2015, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2015, and 3) team level statistics (such as outs above average or weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
 
@@ -202,7 +202,7 @@ into optimal bullpen management, but elaborating further is outside the scope of
 \section{Ethical Implications and Conclusions}
 The ethical implications of this project are relatively minimal. 
 The data is publicly available and we did not collect any new data.
-The models we trained are used to identify feature importance, which are not used in any negative way.
+The models we trained are used to identify feature importance and not used in a way that is harmful or misleading.
 Therefore, there is no risk of misuse or misunderstanding.
 
 In conclusion, our project revealed that postseason pitching is the most important factor in determining success. 
