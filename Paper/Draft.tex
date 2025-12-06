@@ -59,18 +59,16 @@ Several previous studies have examined MLB postseason performance. Baseball Pros
 %% Second Section 
 \section{Data Set}
 
-\par We use MLB game data from 2014-2025. The data includes variables such as pitcher skill level and team OOA, team WOBA, bullpen FIP, bullpen freshness, and whether the team is a wildcard (lingo will be explained later in the paper). The data set is strong in that the data is specifically geared towards matchups and understanding the impact of the wildcard on the postseason.
+\par We use MLB game data from 2014-2025. The data includes variables such as pitcher skill level and team OOA, team WOBA, bullpen FIP, bullpen freshness, and whether the team is a wildcard. The data set is strong in that the data is specifically geared towards games and understanding the impact of the wildcard on the postseason.
 
-\par We gathered the data for the project in three main pulls. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular season from 2014-2025, 2) the pitcher logs for each game for each pitcher during the post season from 2014-2025, and 3) team level statistics (such as outs above average or weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
+\par Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular seasons and post seasons from 2014-2025, and 2) team level statistics (such as outs above average, weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
 
-\par A shortcoming of this dataset is that the quantity of postseason games (317) is dwarfed by the quantity of regular season games (~20,000). Because the state of whether a team is a wild card or not is only pertinent in the postseason, this dataset (which reflects the real life proportion) is wildly unbalanced. Therefore any models we train may be incentivized to disregard the wildcard feature.
+\par A shortcoming of this dataset is that the quantity of postseason games (317) is dwarfed by the quantity of regular season games (~20,000). Because the state of whether a team is a wild card or not is only pertinent in the postseason, this dataset (which reflects the real life proportion) is wildly unbalanced.
 
-Based on our prior experience with baseball, we form the following hypotheses:
+Based on our prior experience with baseball, we form the following hypothesis:
 
 \begin{enumerate}
-    \item Wild Card teams may enter the later rounds of the postseason carrying more momentum than their division winner counterpart, causing them to win.
-    \item Bullpen strength will be more important in the postseason than in the regular season.
-    \item Matchup-based factors (pitcher handedness, lineup construction) may be more important than overall regular season strength. 
+    \item Wild card teams may enter the later rounds of the postseason with the advantages of momentum (having played other wild card teams while division winners rested) and the high stakes of a Cinderella story, neither of which would be otherwise captured in the dataset.
 \end{enumerate}
 
 \section{Data Cleaning / Feature Engineering }
@@ -137,7 +135,7 @@ Based on our prior experience with baseball, we form the following hypotheses:
 \par Considered as a whole, the data is clean and comprehensive, including nearly every game from 2014-2025. The feature values are either numerical ratio data or boolean expressed as 0 or 1, and the distributions of each feature are as expected. The format of the dataset is ideal for training data.
 
 \FloatBarrier % Prevent figures from floating into the next section
-\clearpage % Start the next section on a fresh page
+% \clearpage % Start the next section on a fresh page
 
 %%Fourth Section
 \section{Learning Algorithms and In-depth Analysis }
