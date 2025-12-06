@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  5 DEC 2025 18:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  5 DEC 2025 18:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -727,13 +727,7 @@ s; reported on input line 38.
 
 
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (3.47668pt too wide) in paragraph at lines 73--74
-[]\OT1/cmr/m/n/10.95 Matchup-based fac-tors (pitcher hand-ed-ness, lineup con-s
-truc-tion) may
- []
-
-
-Overfull \hbox (1.03537pt too wide) in paragraph at lines 82--83
+Overfull \hbox (1.03537pt too wide) in paragraph at lines 81--82
 []\OT1/cmr/bx/n/10.95 Bullpen \OT1/cmr/m/n/10.95 Be-cause pitch-ing strains a p
 itcher's arm quickly, one pitcher
  []
@@ -741,7 +735,7 @@ itcher's arm quickly, one pitcher
 
 
 [2]
-Overfull \hbox (37.13632pt too wide) in paragraph at lines 97--98
+Overfull \hbox (37.13632pt too wide) in paragraph at lines 96--97
 []\OT1/cmr/m/n/10.95 The dataset of team level sta-tis-tics by year (sourced fr
 om Base-ball Savant[[]])
  []
@@ -752,44 +746,34 @@ Underfull \vbox (badness 1210) has occurred while \output is active []
 
 
 [3]
-<figures/feature_distributions.pdf, id=78, 714.7503pt x 570.933pt>
+<figures/feature_distributions.pdf, id=76, 715.17549pt x 352.34511pt>
 File: figures/feature_distributions.pdf Graphic file (type pdf)
 <use figures/feature_distributions.pdf>
 Package pdftex.def Info: figures/feature_distributions.pdf  used on input line 
-119.
-(pdftex.def)             Requested size: 360.0pt x 287.57402pt.
-<figures/results_box_plots.pdf, id=81, 1003.8303pt x 570.933pt>
+118.
+(pdftex.def)             Requested size: 360.0pt x 177.36029pt.
+<figures/results_box_plots.pdf, id=78, 1004.3529pt x 568.17041pt>
 File: figures/results_box_plots.pdf Graphic file (type pdf)
 <use figures/results_box_plots.pdf>
-Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 130.
+Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 129.
 
-(pdftex.def)             Requested size: 360.0pt x 204.75166pt.
-<figures/logistic_correlation.pdf, id=83, 1292.9103pt x 426.393pt>
-File: figures/logistic_correlation.pdf Graphic file (type pdf)
-<use figures/logistic_correlation.pdf>
-Package pdftex.def Info: figures/logistic_correlation.pdf  used on input line 1
-49.
-(pdftex.def)             Requested size: 360.0pt x 118.72559pt.
+(pdftex.def)             Requested size: 360.0pt x 203.64822pt.
 
 
-[4]
-
-[5 <./figures/feature_distributions.pdf>]
-
-[6 <./figures/results_box_plots.pdf> <./figures/logistic_correlation.pdf>]
-<../top15Features.png, id=103, 689.57625pt x 569.12625pt>
+[4 <./figures/feature_distributions.pdf>]
+<../top15Features.png, id=132, 689.57625pt x 569.12625pt>
 File: ../top15Features.png Graphic file (type png)
 <use ../top15Features.png>
-Package pdftex.def Info: ../top15Features.png  used on input line 172.
+Package pdftex.def Info: ../top15Features.png  used on input line 152.
 (pdftex.def)             Requested size: 323.9978pt x 267.40253pt.
 
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[7
 
 
- <../top15Features.png>]
+[5 <./figures/results_box_plots.pdf>]
 
-[8] (./Draft.bbl
+[6 <../top15Features.png>] (./Draft.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 9--13
 []\OT1/cmr/m/n/9 Baseball Prospec-tus. Post-sea-son anal-y-sis archive. []$\OT1
 /cmtt/m/n/9 https : / / www .
@@ -797,22 +781,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 9--13
 
 )
 
-[9] (./Draft.aux)
+[7] (./Draft.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
 Package rerunfilecheck Info: File `Draft.out' has not changed.
-(rerunfilecheck)             Checksum: FFAC81D11E3A52B37385F248132F94E8;1740.
+(rerunfilecheck)             Checksum: BC68262508552B4D956D4E63F3729E3F;1740.
  ) 
 Here is how much of TeX's memory you used:
- 22777 strings out of 473190
- 418776 string characters out of 5715801
- 789753 words of memory out of 5000000
- 45477 multiletter control sequences out of 15000+600000
+ 22764 strings out of 473190
+ 418415 string characters out of 5715801
+ 789431 words of memory out of 5000000
+ 45469 multiletter control sequences out of 15000+600000
  567443 words of font info for 69 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 84i,7n,91p,929b,472s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,6n,91p,929b,462s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
@@ -822,10 +806,10 @@ ocal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
 cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loc
 al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local
 /texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Draft.pdf (9 pages, 473084 bytes).
+Output written on Draft.pdf (7 pages, 365429 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 135 compressed objects within 2 object streams
- 34 named destinations out of 1000 (max. 500000)
- 97 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 253 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
+ 29 named destinations out of 1000 (max. 500000)
+ 92 words of extra memory for PDF output out of 10000 (max. 10000000)
 
