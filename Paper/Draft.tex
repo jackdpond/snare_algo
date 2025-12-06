@@ -133,27 +133,8 @@ Based on our prior experience with baseball, we form the following hypotheses:
 }
 \label{fig:ResultBoxPlots} % for automatic cross referencing
 \end{figure}
-% \par 
-% \begin{figure}[htb]
-% \begin{center} %Put your images in a figure like this
-% \includegraphics[width=\textwidth]{figures/home_away.pdf} % Better to make them pdfs than png or gif or jpeg
-% \end{center}
-% \caption{Surprisingly, teams are slightly more likely to win while playing away games, and slightly more likely to lose at home games. 
-% }
-% \label{fig:HomeAway} % for automatic cross referencing
-% \end{figure}
 
-\par Figure ~\ref{fig:LogisticCorrelation} also shows the weakness of logistic correlation between the \textit{differences} between the two teams' features and the results of the game. The results are a 1 if team 1 wins and 0 if team 1 loses. Each of the independent variables is the value for team 2 subtracted from the value for team 2. As epected, the team with higher WOBA and higher OAA is expected to win. Mysteriously, a pitcher with a higher starting FIP than the opponent is inversely correlated with games won.
-\begin{figure}[htb]
-\begin{center} %Put your images in a figure like this
-\includegraphics[width=\textwidth]{figures/logistic_correlation.pdf} % Better to make them pdfs than png or gif or jpeg
-\end{center}
-\caption{These figures plot the result of a game (1 for win, 0 for loss) against the difference between team 1 and team 2 for various features: Starter FIP, WOBA, and OOA. We hypothesized that each feature would correlate with wins, and are surprised that Starter FIP is inversely correlated with wins.
-}
-\label{fig:LogisticCorrelation} % for automatic cross referencing
-\end{figure}
-
-\par Considered as a whole, the data is clean and comprehensive, including nearly every game from 2014-2025. The feature values are either numerical ratio data or boolean expressed as 0 or 1, and the distributions of each feature are as expected. It is ideal for training data.
+\par Considered as a whole, the data is clean and comprehensive, including nearly every game from 2014-2025. The feature values are either numerical ratio data or boolean expressed as 0 or 1, and the distributions of each feature are as expected. The format of the dataset is ideal for training data.
 
 \FloatBarrier % Prevent figures from floating into the next section
 \clearpage % Start the next section on a fresh page
