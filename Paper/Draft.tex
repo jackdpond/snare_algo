@@ -63,9 +63,7 @@ Furthermore, David Berri and Martin Schmidt applied regression models to show th
 %% Second Section 
 \section{Data Set}
 
-\par We use MLB game data from 2014-2025. The data includes variables such as pitcher skill level, team OOA, team WOBA, bullpen FIP, bullpen freshness, and whether the team is a wild card. The data set is strong in that the data is specifically geared towards games and understanding the impact of the wild card on the postseason.
-
-\par Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular seasons and post seasons from 2014-2025, and 2) team level statistics (such as outs above average, weighted on-base average, whether the team is a wild card) for each team for each year from 2014 - 2025.
+\par We use MLB game data from 2014-2025. The data includes variables such as pitcher skill level and team average outs above average (OAA), team average weighted on base average (WOBA), bullpen fielding independent pitching (FIP), bullpen freshness, and whether the team is a wildcard. Our final dataset incorporates data from 1) The pitcher logs for each game for each pitcher during the regular seasons and post seasons from 2014-2025, and 2) team level statistics (such as outs above average, weighted on-base average, whether the team is a wildcard) for each team for each year from 2014 - 2025.
 
 \par A shortcoming of this dataset is that the quantity of postseason games (317) is dwarfed by the quantity of regular season games (~20,000). Because the state of whether a team is a wild card or not is only pertinent in the postseason, this dataset (which reflects the real life proportion) is wildly unbalanced.
 
@@ -75,18 +73,11 @@ Based on our prior experience with baseball, we form the following hypothesis:
     \item Wild card teams may enter the later rounds of the postseason with the advantages of momentum (having played other wild card teams while division winners rested) and the high stakes of a Cinderella story, neither of which would be otherwise captured in the dataset.
 \end{enumerate}
 
-\section{Data Cleaning / Feature Engineering }
+\section{Data Cleaning / Feature Engineering}
 
-\par Our dataset required extensive data cleaning and feature engineering. As a precursor to the discussion, we will first define important terms and acronyms.
+\par Our dataset required extensive data cleaning and feature engineering.
 
-  \begin{enumerate}
-  \item \textbf{FIP} Fielding Independent Pitching is a metric designed to capture how well a pitcher prevents runs independently of the rest of the defense.
-  \item \textbf{Bullpen} Because pitching strains a pitcher's arm quickly, one pitcher will start and throw about 5-7 innings before being switched out for a \textit{relief pitcher}. The bank of pitchers ready to relieve is called the Bullpen.
-  \item \textbf{OAA} stands for Outs Above Average and signifies how many more outs a player makes than an average fielder at the same position.
-  \item \textbf{WOBA} Weighted On-Base Average signifies how often players make it on base, weighted by how likely they are to score conditioned on how they made it on base.
-\end{enumerate}
-
-\par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen, average OAA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wild card in the playoffs. We also decided to include a feature indicating which team played at home.
+\par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen (bank of relief pitchers), average OAA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wildcard in the playoffs. We also decided to include a feature indicating which team played at home.
 
 \par The pitchers' logs (sourced from Baseball-Reference\cite{baseballref}) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns.
 
@@ -147,20 +138,19 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par With different iterations, our best Random Forest model achieved an F1 score of 0.6963, while our best XGBoost model achieved an F1 score of 0.701. The two models had similar feature importance ranking, with the top 15 features matching for both models.
 We found that the most important features in the postseason were a team's FIP and freshness for both starting and relief pitchers. This was somewhat surprising to us, as we expected that a team's OOA and 
-WOBA would be more significant in October. However, our results are consistent with baseball intuition: pitching wins games. We also found that being a wild card team was not nearly as significant as we expected, ranking last in feature importance. 
+WOBA would be more significant in the post season. However, our results are consistent with baseball intuition: pitching wins games. We also found that being a wild card team was not nearly as significant as we expected, ranking last in feature importance. 
 See Figure~\ref{fig:PostseasonPermImportance}.
 
 \begin{figure}[H]
   \begin{center}
-    \includegraphics[width=0.9\textwidth]{../top15Features.png}
+    \includegraphics[width=0.9\textwidth]{figures/features_importance.pdf}
   \end{center}
   \caption{Feature importance for the postseason (XGBoost model)}
   \label{fig:PostseasonPermImportance}
   \end{figure}
 
 
-\par Taken together, these results suggest what teams should try to optimize for in the postseason. Having a talented, well rested bullpen and a strong starting pitcher appears to be a key ingredient for postseason success. This is easier said than done, as it requires managing the bullpen in a way that does not wear pitchers out over the course of a 162-game season while still winning enough games to reach October in the first place. There has been significant research
-into optimal bullpen management, but elaborating further is outside the scope of this project. 
+\par Taken together, these results suggest what teams should try to optimize for in the postseason. Having a talented, well rested bullpen and a strong starting pitcher appear to be key ingredients for postseason success. More work remains to be done as to how to optimize bullpen management to preserve pitchers' arms while making it to the playoffs in the first place
 
 
 %%Fifth Section
