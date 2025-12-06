@@ -42,7 +42,7 @@
 
 %% First Section
 \section{Research question and overview of the data }
-\par Within the Major League Baseball (MLB) organization, there are two leagues (The American League and the National League), which are further split into three divisions each. At the end of the regular season of 162 games for each team, 12 teams are chosen to advance to the post-season, six from each league. Six of these teams are simply the teams with the best season record within their division. These teams are known as "division winners". The remaining six teams that advance to the postseason are the teams with the best season records out of the remaining teams, three from each league. These teams are known as "wildcards", and are the underdogs of the postseason tournament which culminates in the World Series, where the winners of each league square off to be declared the best team in the MLB.
+%%\par Within the Major League Baseball (MLB) organization, there are two leagues (The American League and the National League), which are further split into three divisions each. At the end of the regular season of 162 games for each team, 12 teams are chosen to advance to the post-season, six from each league. Six of these teams are simply the teams with the best season record within their division. These teams are known as "division winners". The remaining six teams that advance to the postseason are the teams with the best season records out of the remaining teams, three from each league. These teams are known as "wildcards", and are the underdogs of the postseason tournament which culminates in the World Series, where the winners of each league square off to be declared the best team in the MLB.
 
 \par Recent MLB postseasons have shown an interesting trend: Wild Card teams often perform better than division winners, even though they typically finish the regular season with weaker records. This raises important questions for both baseball fans and analysts:
 
@@ -54,11 +54,11 @@
   \textit{How should the fact that a team is a Wild Card factor in to predicting their success?}
   \end{quote}
 
-These two questions  are interesting because they challenge the assumption that regular season strength is a reliable predictor of postseason performance. It also relates to the design of playoff formats and whether certain types of teams are structurally advantaged in short playoff series.
+These two questions are interesting because they challenge the assumption that regular season strength is a reliable predictor of postseason performance. It also relates to the design of playoff formats and whether certain types of teams are structurally advantaged in short playoff series.
 
 \section{Background and Prior Work}
 
-Several previous studies have examined MLB postseason performance. Baseball Prospectus and FanGraphs have written extensively about the role of randomness, bullpen strength, and matchups in postseason series \cite{baseballprospectus_ps,fangraphs_ps}. Academic work (e.g., Berri \& Schmidt, 2010) has shown that regular season winning percentage is a relatively weak predictor of postseason outcomes \cite{berri_schmidt_2010}. 
+Several previous studies have examined MLB postseason performance. Baseball Prospectus and FanGraphs have written extensively about the role of randomness, bullpen strength, and matchups in postseason series \cite{baseballprospectus_ps,fangraphs_ps} applying regression models to predict postseason outcomes. Academic work (e.g., Berri \& Schmidt, 2010) has shown that regular season winning percentage is a relatively weak predictor of postseason outcomes \cite{berri_schmidt_2010}. 
 %% Second Section 
 \section{Data Set}
 
@@ -170,7 +170,7 @@ See Figure~\ref{fig:PostseasonPermImportance}.
   \begin{center}
     \includegraphics[width=0.9\textwidth]{../top15Features.png}
   \end{center}
-  \caption{Feature importance for the postseason}
+  \caption{Feature importance for the postseason (XGBoost model)}
   \label{fig:PostseasonPermImportance}
   \end{figure}
 
@@ -183,7 +183,7 @@ into optimal bullpen management, but elaborating further is outside the scope of
 \section{Ethical Implications and Conclusions}
 \par The ethical implications of this project are relatively minimal. The data is publicly available and we did not collect any new data. The models we trained are used to identify feature importance and not used in a way that is harmful or misleading. Therefore, there is no risk of misuse or misunderstanding.
 
-\par In conclusion, our project revealed that postseason pitching is the most important factor in determining success. Our original hypthesis that Wild Card teams would perform better than division winners was not supported by our findings. 
+\par In conclusion, our project revealed that postseason pitching is the most important factor in determining success. Our original hypothesis that Wild Card teams would perform better than division winners was not supported by our findings. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
