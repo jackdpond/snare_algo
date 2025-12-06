@@ -140,9 +140,9 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 %%Fourth Section
 \section{Learning Algorithms and In-depth Analysis }
-\par For our project, we trained both Random Forest and XGBoost models to predict the outcome of a game based on the features of the teams playing. The primary goal of our modeling was not prediction accuracy, but rather to identify which features most strongly influence game outcomes in the postseason. These models work well for our problem because they are able to return feature importance scores that are interpretable and easy to understand.
+\par We trained both Random Forest and XGBoost models to predict the outcome of a game based on the features of the teams playing. The primary goal of our modeling was not prediction accuracy, but rather to identify which features most strongly influence game outcomes in the postseason. These models work well for our problem because they are able to return feature importance scores that are interpretable and easy to understand.
 
-\par With different iterations, our best Random Forest model achieved an F1 score of 0.6963, while our best XGBoost model achieved an F1 score of 0.701. The two models had similar feature importance ranking, with the top 15 features being the same for both models.
+\par With different iterations, our best Random Forest model achieved an F1 score of 0.6963, while our best XGBoost model achieved an F1 score of 0.701. The two models had similar feature importance ranking, with the top 15 features matching for both models.
 We found that the most important features in the postseason were a team's FIP and freshness for both starting and relief pitchers. This was somewhat surprising to us, as we expected that a team's OOA and 
 WOBA would be more significant in October. However, our results are consistent with baseball intuition: pitching wins games. We also found that being a Wild Card team was not nearly as significant as we expected, ranking last in feature importance. 
 See Figure~\ref{fig:PostseasonPermImportance}.
