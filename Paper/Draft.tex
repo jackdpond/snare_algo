@@ -107,7 +107,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 \par As seen in Figure ~\ref{fig:FeatureDistributions}, skill metrics (FIP, WOBA, OOA) are normally distributed, which is as expected. The distribution of freshness, both for starting pitchers and relief pitchers, is heavily skewed towards 0 days of rest. 
 
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center} %Put your images in a figure like this
 \includegraphics[width=\textwidth]{figures/feature_distributions.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
@@ -118,7 +118,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par Figure ~\ref{fig:ResultBoxPlots} shows the distributions of each of the six key features grouped by result. As shown in the figure, the distributions for each feature hardly vary by result, implying that Baseball data is quite noisy, with lots of randomness incorporated into the final result.
 
-\begin{figure}[htb]
+\begin{figure}[H]
 \begin{center} %Put your images in a figure like this
 \includegraphics[width=\textwidth]{figures/results_box_plots.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
@@ -130,7 +130,6 @@ Based on our prior experience with baseball, we form the following hypothesis:
 \par Considered as a whole, the data is clean and comprehensive, including nearly every game from 2014-2025. The feature values are either numerical ratio data or boolean expressed as 0 or 1, and the distributions of each feature are as expected. The format of the dataset is ideal for training data.
 
 \FloatBarrier % Prevent figures from floating into the next section
-% \clearpage % Start the next section on a fresh page
 
 %%Fourth Section
 \section{Learning Algorithms and In-depth Analysis }
