@@ -4,45 +4,45 @@ The top-level auxiliary file: Draft.aux
 The style file: alpha.bst
 Database file #1: refs.bib
 Warning--to sort, need author or key in baseballsavant
-You've used 5 entries,
+You've used 4 entries,
             2543 wiz_defined-function locations,
-            583 strings with 5012 characters,
-and the built_in function-call counts, 1408 in all, are:
-= -- 142
-> -- 44
+            576 strings with 4913 characters,
+and the built_in function-call counts, 1074 in all, are:
+= -- 108
+> -- 25
 < -- 3
-+ -- 14
-- -- 12
-* -- 65
-:= -- 231
-add.period$ -- 19
-call.type$ -- 5
-change.case$ -- 25
-chr.to.int$ -- 4
-cite$ -- 7
-duplicate$ -- 56
-empty$ -- 123
-format.name$ -- 18
-if$ -- 297
++ -- 7
+- -- 6
+* -- 46
+:= -- 169
+add.period$ -- 15
+call.type$ -- 4
+change.case$ -- 19
+chr.to.int$ -- 3
+cite$ -- 6
+duplicate$ -- 43
+empty$ -- 103
+format.name$ -- 11
+if$ -- 232
 int.to.chr$ -- 2
 int.to.str$ -- 0
-missing$ -- 1
-newline$ -- 32
-num.names$ -- 12
-pop$ -- 38
+missing$ -- 0
+newline$ -- 26
+num.names$ -- 9
+pop$ -- 34
 preamble$ -- 1
-purify$ -- 30
+purify$ -- 23
 quote$ -- 0
-skip$ -- 53
+skip$ -- 41
 stack$ -- 0
-substring$ -- 37
-swap$ -- 5
+substring$ -- 29
+swap$ -- 4
 text.length$ -- 3
 text.prefix$ -- 2
 top$ -- 0
-type$ -- 40
+type$ -- 32
 warning$ -- 1
-while$ -- 9
-width$ -- 7
-write$ -- 70
+while$ -- 6
+width$ -- 5
+write$ -- 56
 (There was 1 warning)
