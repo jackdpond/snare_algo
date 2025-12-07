@@ -20,7 +20,10 @@
 \usetikzlibrary{positioning}
 \tikzset{round/.style={draw,rounded corners,minimum width=3.8cm,minimum height=0.9cm,align=center}}
 
- 
+% Reduce spacing around floats to minimize gaps
+\setlength{\floatsep}{8pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{10pt plus 2pt minus 4pt}
+\setlength{\intextsep}{8pt plus 2pt minus 2pt}
 
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
 %%% WARNING: Do NOT change the page size, fonts, or margins!  Penalties will apply.
@@ -107,10 +110,11 @@ Based on our prior experience with baseball, we form the following hypothesis:
 \par As seen in Figure ~\ref{fig:FeatureDistributions}, skill metrics (FIP, WOBA, OOA) are normally distributed, which is as expected. The distribution of freshness, both for starting pitchers and relief pitchers, is heavily skewed towards 0 days of rest. 
 
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \begin{center} %Put your images in a figure like this
-\includegraphics[width=\textwidth]{figures/feature_distributions.pdf} % Better to make them pdfs than png or gif or jpeg
+\includegraphics[width=0.95\textwidth]{figures/feature_distributions.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
+\vspace{-0.1cm}
 \caption{Distributions of various of the features of our final dataset. Each of the skill metrics (FIP, WOBA, OOA) are distributed normally, as we would expect, and the freshness is greatly skewed towards 0 days rest.  
 }
 \label{fig:FeatureDistributions} % for automatic cross referencing
@@ -118,10 +122,11 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par Figure ~\ref{fig:ResultBoxPlots} shows the distributions of each of the six key features grouped by result. As shown in the figure, the distributions for each feature hardly vary by result, implying that Baseball data is quite noisy, with lots of randomness incorporated into the final result.
 
-\begin{figure}[H]
+\begin{figure}[!htbp]
 \begin{center} %Put your images in a figure like this
-\includegraphics[width=\textwidth]{figures/results_box_plots.pdf} % Better to make them pdfs than png or gif or jpeg
+\includegraphics[width=0.95\textwidth]{figures/results_box_plots.pdf} % Better to make them pdfs than png or gif or jpeg
 \end{center}
+\vspace{-0.1cm}
 \caption{This figure shows the distribution of six features, grouped by result (1 for win, 0 for loss). Regardless of feature, the result-grouped distributions are nearly identical for each feature. 
 }
 \label{fig:ResultBoxPlots} % for automatic cross referencing
@@ -129,7 +134,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par Considered as a whole, the data is clean and comprehensive, including nearly every game from 2014-2025. The feature values are either numerical ratio data or boolean expressed as 0 or 1, and the distributions of each feature are as expected. The format of the dataset is ideal for training data.
 
-\FloatBarrier % Prevent figures from floating into the next section
+\FloatBarrier
 
 %%Fourth Section
 \section{Learning Algorithms and In-depth Analysis }
