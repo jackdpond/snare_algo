@@ -80,7 +80,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par Our dataset required extensive data cleaning and feature engineering.
 
-\par Early on, we decided that we wanted our match-up model to include the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen (bank of relief pitchers), average OAA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), and whether the team is a wild card in the playoffs. We also decided to include a feature indicating which team played at home.
+\par We decided to create a match-up model to with the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen (bank of relief pitchers), average OAA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), whether the team is a wild card in the playoffs, and whether the team is at home.
 
 \par The pitchers' logs (sourced from Baseball-Reference\cite{baseballref}) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns.
 
@@ -147,7 +147,7 @@ See Figure~\ref{fig:Top15Features}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.78\textwidth]{figures/Top15.png}
+  \includegraphics[width=\textwidth]{figures/Top15.pdf}
   \caption{Comparison of the top 15 most important features for the regular season (left) versus the postseason (right).}
   \label{fig:Top15Features}
 \end{figure}
