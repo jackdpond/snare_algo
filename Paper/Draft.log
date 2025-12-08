@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  5 DEC 2025 19:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 DEC 2025 22:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -660,30 +660,30 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 (./Draft.aux)
 \openout1 = `Draft.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 31.
 
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 28.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 31.
 
 
 (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -711,7 +711,7 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-Package hyperref Info: Link coloring OFF on input line 28.
+Package hyperref Info: Link coloring OFF on input line 31.
 
 (./Draft.out) (./Draft.out)
 \@outlinefile=\write4
@@ -722,54 +722,46 @@ Package caption Info: End \AtBeginDocument code.
 
 
 Class amsart Warning: Abstract should precede \maketitle in AMS document classe
-s; reported on input line 38.
+s; reported on input line 41.
 
 
 
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (31.66132pt too wide) in paragraph at lines 89--90
+
+[2]
+Overfull \hbox (31.66132pt too wide) in paragraph at lines 91--92
 []\OT1/cmr/m/n/10.95 The dataset of team level sta-tis-tics by year (sourced fr
 om Base-ball Savant[[]])
  []
 
 
 
-[2]
-<figures/feature_distributions.pdf, id=66, 715.17549pt x 352.34511pt>
+[3]
+<figures/feature_distributions.pdf, id=70, 710.1111pt x 346.94682pt>
 File: figures/feature_distributions.pdf Graphic file (type pdf)
 <use figures/feature_distributions.pdf>
 Package pdftex.def Info: figures/feature_distributions.pdf  used on input line 
-111.
-(pdftex.def)             Requested size: 360.0pt x 177.36029pt.
-
-Underfull \vbox (badness 2573) has occurred while \output is active []
-
-
-
-[3]
-<figures/results_box_plots.pdf, id=72, 1004.3529pt x 568.17041pt>
+113.
+(pdftex.def)             Requested size: 280.79956pt x 137.19336pt.
+<figures/results_box_plots.pdf, id=72, 927.81947pt x 492.46323pt>
 File: figures/results_box_plots.pdf Graphic file (type pdf)
 <use figures/results_box_plots.pdf>
-Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 122.
+Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 124.
 
-(pdftex.def)             Requested size: 360.0pt x 203.64822pt.
-
-
-[4 <./figures/feature_distributions.pdf>]
-<figures/features_importance.pdf, id=126, 689.57625pt x 569.12625pt>
-File: figures/features_importance.pdf Graphic file (type pdf)
-<use figures/features_importance.pdf>
-Package pdftex.def Info: figures/features_importance.pdf  used on input line 14
-5.
-(pdftex.def)             Requested size: 323.9978pt x 267.40253pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+(pdftex.def)             Requested size: 280.79956pt x 149.04008pt.
 
 
+[4 <./figures/feature_distributions.pdf> <./figures/results_box_plots.pdf>]
+<figures/Top15.png, id=175, 1148.3703pt x 498.663pt>
+File: figures/Top15.png Graphic file (type png)
+<use figures/Top15.png>
+Package pdftex.def Info: figures/Top15.png  used on input line 147.
+(pdftex.def)             Requested size: 280.79956pt x 121.9338pt.
 
-[5 <./figures/results_box_plots.pdf>]
 
-[6 <./figures/features_importance.pdf>] (./Draft.bbl
+[5 <./figures/Top15.png>]
+
+[6] (./Draft.bbl
 Underfull \hbox (badness 4967) in paragraph at lines 15--19
 []\OT1/cmr/m/n/9 FanGraphs. Pre-dict-ing the play-offs. []$\OT1/cmtt/m/n/9 http
 s : / / community . fangraphs . com /
@@ -803,26 +795,27 @@ Package rerunfilecheck Info: File `Draft.out' has not changed.
 (rerunfilecheck)             Checksum: 4E95A89B5B0AE0674A95FD3BEDE8724D;1732.
  ) 
 Here is how much of TeX's memory you used:
- 22758 strings out of 473190
- 418457 string characters out of 5715801
- 789392 words of memory out of 5000000
- 45468 multiletter control sequences out of 15000+600000
+ 22756 strings out of 473190
+ 418270 string characters out of 5715801
+ 790342 words of memory out of 5000000
+ 45466 multiletter control sequences out of 15000+600000
  567443 words of font info for 69 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 84i,6n,91p,930b,486s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,7n,91p,930b,516s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
-></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></us
-r/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/l
-ocal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
-cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loc
-al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local
-/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Draft.pdf (7 pages, 360262 bytes).
+></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
+</usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
+usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr
+/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/lo
+cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
+al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
+l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/
+texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on Draft.pdf (7 pages, 289480 bytes).
 PDF statistics:
- 247 PDF objects out of 1000 (max. 8388607)
- 128 compressed objects within 2 object streams
+ 251 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
  24 named destinations out of 1000 (max. 500000)
  92 words of extra memory for PDF output out of 10000 (max. 10000000)
 
