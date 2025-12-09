@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  7 DEC 2025 22:10
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  9 DEC 2025 00:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -727,41 +727,40 @@ s; reported on input line 41.
 
 
 [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-[2]
-Overfull \hbox (31.66132pt too wide) in paragraph at lines 91--92
+Overfull \hbox (31.66132pt too wide) in paragraph at lines 93--94
 []\OT1/cmr/m/n/10.95 The dataset of team level sta-tis-tics by year (sourced fr
 om Base-ball Savant[[]])
  []
 
 
 
-[3]
-<figures/feature_distributions.pdf, id=70, 710.1111pt x 346.94682pt>
+[2]
+<figures/feature_distributions.pdf, id=65, 710.1111pt x 274.67682pt>
 File: figures/feature_distributions.pdf Graphic file (type pdf)
 <use figures/feature_distributions.pdf>
 Package pdftex.def Info: figures/feature_distributions.pdf  used on input line 
-113.
-(pdftex.def)             Requested size: 280.79956pt x 137.19336pt.
+115.
+(pdftex.def)             Requested size: 280.79956pt x 108.6156pt.
+
+
+[3]
 <figures/results_box_plots.pdf, id=72, 927.81947pt x 492.46323pt>
 File: figures/results_box_plots.pdf Graphic file (type pdf)
 <use figures/results_box_plots.pdf>
-Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 124.
+Package pdftex.def Info: figures/results_box_plots.pdf  used on input line 126.
 
 (pdftex.def)             Requested size: 280.79956pt x 149.04008pt.
 
 
 [4 <./figures/feature_distributions.pdf> <./figures/results_box_plots.pdf>]
-<figures/Top15.png, id=175, 1148.3703pt x 498.663pt>
-File: figures/Top15.png Graphic file (type png)
-<use figures/Top15.png>
-Package pdftex.def Info: figures/Top15.png  used on input line 147.
-(pdftex.def)             Requested size: 280.79956pt x 121.9338pt.
+<figures/Top15.pdf, id=173, 1156.32pt x 361.35pt>
+File: figures/Top15.pdf Graphic file (type pdf)
+<use figures/Top15.pdf>
+Package pdftex.def Info: figures/Top15.pdf  used on input line 150.
+(pdftex.def)             Requested size: 360.0pt x 112.49704pt.
 
 
-[5 <./figures/Top15.png>]
-
-[6] (./Draft.bbl
+[5 <./figures/Top15.pdf>] (./Draft.bbl
 Underfull \hbox (badness 4967) in paragraph at lines 15--19
 []\OT1/cmr/m/n/9 FanGraphs. Pre-dict-ing the play-offs. []$\OT1/cmtt/m/n/9 http
 s : / / community . fangraphs . com /
@@ -786,7 +785,7 @@ Underfull \hbox (badness 4341) in paragraph at lines 21--27
 
 )
 
-[7] (./Draft.aux)
+[6] (./Draft.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -795,13 +794,13 @@ Package rerunfilecheck Info: File `Draft.out' has not changed.
 (rerunfilecheck)             Checksum: 4E95A89B5B0AE0674A95FD3BEDE8724D;1732.
  ) 
 Here is how much of TeX's memory you used:
- 22756 strings out of 473190
- 418270 string characters out of 5715801
- 790342 words of memory out of 5000000
- 45466 multiletter control sequences out of 15000+600000
+ 22757 strings out of 473190
+ 418342 string characters out of 5715801
+ 790340 words of memory out of 5000000
+ 45468 multiletter control sequences out of 15000+600000
  567443 words of font info for 69 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 84i,7n,91p,930b,516s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,7n,91p,930b,486s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
@@ -812,10 +811,10 @@ cal/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loc
 al/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/loca
 l/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/
 texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on Draft.pdf (7 pages, 289480 bytes).
+Output written on Draft.pdf (6 pages, 251214 bytes).
 PDF statistics:
- 251 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 24 named destinations out of 1000 (max. 500000)
+ 297 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
  92 words of extra memory for PDF output out of 10000 (max. 10000000)
 
