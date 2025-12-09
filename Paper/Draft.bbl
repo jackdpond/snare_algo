@@ -20,9 +20,7 @@ Baseball-Reference.
 \bibitem[{Fan}25b]{fangraphs_bullpen}
 {FanGraphs}.
 \newblock Using clustering to generate bullpen matchups.
-\newblock
-  \url{https://community.fangraphs.com/using-clustering-to-generate-bullpen-matchups/},
-  2025.
+\newblock \url{https://community.fangraphs.com/using-clustering-to-generate-bullpen-matchups/}, 2025.
 \newblock Accessed November 25, 2025.
 
 \end{thebibliography}
