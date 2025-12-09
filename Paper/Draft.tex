@@ -60,9 +60,8 @@ It also relates to the design of playoff formats and whether certain types of te
 
 \section{Background and Prior Work}
 
-Several previous studies have examined what factors into MLB postseason performance. FanGraphs applied a clustering model to determine which bullpen matchups produced the highest probability of postseason success \cite{fangraphs_bullpen}. 
-Furthermore, FanGraphs also performed a study that looked at the correlation of various statistics for predicting postseason success, only to find that playoff success is random and unpredictable by regular season performance \cite{fangraphs_predicting}.
-We hope to expand on these studies by using random forest and XGBoost models to identify the most important features influencing postseason success.
+Several previous studies have examined what factors into MLB postseason performance. FanGraphs applied a clustering model to determine which bullpen matchups produced the highest probability of postseason success \cite{fangraphs_bullpen}. FanGraphs also performed a study that looked at the correlation of various statistics for predicting postseason success, and found that playoff success is random and unpredictable by regular season performance \cite{fangraphs_predicting}.
+We hope to expand on these studies by using random forest and XGBoost models to identify the most important features for predicting postseason success.
 
 %% Second Section 
 \section{Data Set}
@@ -71,17 +70,13 @@ We hope to expand on these studies by using random forest and XGBoost models to 
 
 \par A shortcoming of this dataset is that the quantity of postseason games (317) is dwarfed by the quantity of regular season games (~20,000). Because the state of whether a team is a wild card or not is only pertinent in the postseason, this dataset (which reflects the real life proportion) is wildly unbalanced.
 
-Based on our prior experience with baseball, we form the following hypothesis:
-
-\begin{enumerate}
-    \item Wild card teams may enter the later rounds of the postseason with the advantages of momentum (having played other wild card teams while division winners rested) and the high stakes of a Cinderella story, neither of which would be otherwise captured in the dataset.
-\end{enumerate}
+Based on our prior experience with baseball, we form the following hypothesis: Wild card teams may enter the later rounds of the postseason with the advantages of momentum (having played other wild card teams while division winners rested) and the high stakes of a Cinderella story, neither of which would be otherwise captured in the dataset.
 
 \section{Data Cleaning / Feature Engineering}
 
 \par Our dataset required extensive data cleaning and feature engineering.
 
-\par We decided to create a match-up model to with the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen (bank of relief pitchers), average OAA (as an indication of the efficacy of the team's defense), average WOBA (as an indication of the efficacy of the team's offense), whether the team is a wild card in the playoffs, and whether the team is at home.
+\par We decided to create a match-up model to with the following features for both teams: starting pitcher's FIP, starting pitcher's freshness, an aggregated value for the FIP and freshness of the pitchers in the bullpen (bank of relief pitchers), average OAA (indicating the skill of the team's defense), average WOBA (indicating the skill of the team's offense), whether the team is a wild card in the playoffs, and whether the team is at home.
 
 \par The pitchers' logs (sourced from Baseball-Reference\cite{baseballref}) included the following pertinent features: Date, Team, a unique Pitcher ID, FIP, Innings played, and the result of the game. In order to assemble it into a useable format for our problem, we made a few tweaks and added some new columns.
 
@@ -93,7 +88,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par The dataset of team level statistics by year (sourced from Baseball Savant\cite{baseballsavant}) included the following pertinent features: Team, Year, OOA (averaged over the season), WOBA (averaged over the season), and Is-Wildcard. This data was quite clean, except that it was missing all WOBA values for 2024. We decided the lowest impact filler would be the average of all WOBA values. After readying the data, we merged it with the pitcher logs on Year and Team.
 
-\par Equipped with a newly-merged datset (with features Date, Team, Pitcher ID, FIP, Innings played, Game Result, Freshness, Starter, Game ID, Team OOA, Team WOBA, Is-Wildcard for each pitcher in each game) we were ready to assemble a final games dataset. To do so, we grouped the newly-merged dataset by Game ID and then by team. For each team in each game, we assembled a dictionary containing the starter's FIP and freshness, the meaned FIP and freshness of the relief pitchers, whether the team was at home, team OOA, team FIP, whether it was a post-season game, and if so, whether the team was a wild card during the game. After shuffling the order of the teams, we concatenated the two team's stats into a single row, with a results feature signifying whether the first team in the row won or lost. There were no ties in our dataset. There was a single row with missing data, which we dropped.
+\par Equipped with a newly-merged datset (with features Date, Team, Pitcher ID, FIP, Innings played, Game Result, Freshness, Starter, Game ID, Team OOA, Team WOBA, Is-Wildcard for each pitcher in each game) we assembled a final games dataset. To do so, we grouped the newly-merged dataset by Game ID and then by team. For each team in each game, we assembled a dictionary containing the starter's FIP and freshness, the meaned FIP and freshness of the relief pitchers, whether the team was at home, team OOA, team FIP, whether it was a post-season game, and if so, whether the team was a wild card during the game. After shuffling the order of the teams, we concatenated the two team's stats into a single row, with a results feature signifying whether the first team in the row won or lost. There were no ties in our dataset. We dropped a single row due to missing data.
 
 \par In the final dataset, there is a row for each game containing stats that were true \textit{by the end of the game}. For instance, the FIP value in the game's row is the FIP of the pitcher calculated at the end of the game. If this were a prediction model, this would be considered a mild form of data leakage. Since our model is not a prediction model, but rather a model trained in order to evaluate feature importance, we may treat these post-game calulated values as true values. The same concept applies to why we evaluated the freshness and skill (FIP) of the pitchers that actually played in the game rather than the pitchers in the bullpen that were available.
 
@@ -153,14 +148,11 @@ See Figure~\ref{fig:Top15Features}.
   \label{fig:Top15Features}
 \end{figure}
 
-\par The results show that postseason success depends on talented starting pitching. 
- We also observed an increase in the importance of defensive and offensive metrics 
- (such as OAA and WOBA), reflecting the heightened competitiveness and smaller margins of error 
- in postseason play. 
+\par The results show that postseason success depends on talented starting pitching. We also observed an increase in the importance of defensive and offensive metrics (such as OAA and WOBA), reflecting the heightened competitiveness and smaller margins of error in postseason play. 
 
 %%Fifth Section
 \section{Ethical Implications and Conclusions}
-\par The ethical implications of this project are relatively minimal. The data is publicly available and we did not collect any new data. The models we trained are used to identify feature importance and not used in a way that is harmful or misleading. Therefore, there is no risk of misuse or misunderstanding.
+\par The ethical implications of this project are relatively minimal. The data is publicly available and we did not collect any new data. The models we trained are used to identify feature importance and is explained as to not be misunderstood. However as with any analysis, there is risk readers could misunderstand or willfully misrepresent our conclusions, leading to poor decisions.
 
 \par In conclusion, our project revealed that postseason pitching is the most important factor in determining success. Our original hypothesis that wild card teams would perform better than division winners was not supported by our findings. 
 
