@@ -10,6 +10,7 @@
 \usepackage{placeins} %enables \FloatBarrier, which prevents figures and tables from going below it.
 \usepackage{float} %enables [H] placement option for figures
 \usepackage{hyperref} %makes cross references into hyperlinks. 
+\usepackage{xurl} %allows URLs to break at any character 
 \usepackage{caption}
 \usepackage{subcaption} %Allows subfigures
 
@@ -39,7 +40,7 @@
 \maketitle % this actually makes the title
 
 \begin{abstract}
-  The MLB postseason is known to be unpredictable. Over the last decade, wild card teams sometimes outperform division winners. This paper aims to investigate and quantify the underlying reasons behind this phenomenon. 
+  The MLB postseason is known to be unpredictable. Over the last decade, wild card teams occasionally outperform division winners. This paper aims to investigate and quantify the underlying reasons behind this phenomenon. 
   Using a dataset of MLB games from 2014–2025, we train both Random Forest and XGBoost models to identify the strongest features influencing postseason success and evaluate whether wild card teams possess structural advantages that are not captured by regular season standings.
 
 \end{abstract}
@@ -94,7 +95,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 
 \par Equipped with a newly-merged datset (with features Date, Team, Pitcher ID, FIP, Innings played, Game Result, Freshness, Starter, Game ID, Team OOA, Team WOBA, Is-Wildcard for each pitcher in each game) we were ready to assemble a final games dataset. To do so, we grouped the newly-merged dataset by Game ID and then by team. For each team in each game, we assembled a dictionary containing the starter's FIP and freshness, the meaned FIP and freshness of the relief pitchers, whether the team was at home, team OOA, team FIP, whether it was a post-season game, and if so, whether the team was a wild card during the game. After shuffling the order of the teams, we concatenated the two team's stats into a single row, with a results feature signifying whether the first team in the row won or lost. There were no ties in our dataset. There was a single row with missing data, which we dropped.
 
-\par In the final dataset, there is a row for each game containing stats that were true \textit{by the end of the game}. For instance, the FIP value in the game's row is the FIP of the pitcher calculated at the end of the game. If this were a prediction model, this would be considered a mild form of data leakage. Since our model is not a prediction model, but rather a model trained in order to evaluage feature importance, we may treat these post-game calulated values as true values. The same concept applies to why we evaluated the freshness and skill (FIP) of the pitchers that actually played in the game rather than the pitchers in the bullpen that were available.
+\par In the final dataset, there is a row for each game containing stats that were true \textit{by the end of the game}. For instance, the FIP value in the game's row is the FIP of the pitcher calculated at the end of the game. If this were a prediction model, this would be considered a mild form of data leakage. Since our model is not a prediction model, but rather a model trained in order to evaluate feature importance, we may treat these post-game calulated values as true values. The same concept applies to why we evaluated the freshness and skill (FIP) of the pitchers that actually played in the game rather than the pitchers in the bullpen that were available.
 
 \par With our data in a tabular dataset with a binary label, we were ready to train!
 
@@ -138,7 +139,7 @@ Based on our prior experience with baseball, we form the following hypothesis:
 \section{Learning Algorithms and In-depth Analysis }
 \par To answer our research question, we prioritized feature importance over accuracy. We selected Random Forest and XGBoost classifiers specifically because these tree-based models are more interpretable, providing feature importance scores. 
 
-\par We built a comparative framework by training separate models for the regular season (serving as a baseline) and the postseason. Although both tree-based algorithms were implemented, we focus only on the XGBoost model due to its better performance metrics. Following an 80/20 train-test split, the XGBoost model achieved an accuracy and F1 score of 0.701 for the regular season and 0.733 for the postseason.
+\par We built a comparative framework by training separate models for the regular season (serving as a baseline) and the postseason. Although both algorithms were implemented, we focus only on the XGBoost model due to its better performance metrics. Following an 80/20 train-test split, the XGBoost model achieved an accuracy and F1 score of 0.701 for the regular season and 0.733 for the postseason.
 
 \par Our results show a noticeable shift in which pitching metrics matter most in postseason success. While bullpen FIP was the primary predictor of success in the regular season, starting pitcher FIP became the most important feature in the postseason. Regarding our initial research question, the `Is Wildcard' feature proved negligible with an importance score of just $\approx 0.037$. This indicates that wild card teams possess no structural advantage in the postseason. 
 
